@@ -1,5 +1,8 @@
 #include "IScoreboard.h"
 #include <vector>
+#include <climits>
+
+using namespace std;
 
 class Sport: public IScoreboard {
   public:
@@ -17,7 +20,7 @@ class Sport: public IScoreboard {
     int periods;
     int teams;
     int score;
-}
+};
 
 Sport::Sport(int competitor_count, int period_count) {
   m_scoreboard.resize(competitor_count, vector<int>(period_count, 0));
@@ -26,34 +29,34 @@ Sport::Sport(int competitor_count, int period_count) {
 }
 
 bool Sport::validateIndex(int competitor, int periods) {
-  if(competitor > competitor_count || competitor <= 0) {
+  if(competitor > m_competitor_count || competitor <= 0) {
     return false;
   }
-  if(period > period_count || period <= 0) {
+  if(periods > m_period_count || periods <= 0) {
     return false;
   }
   return true;
 }
 
 void Sport::setScore(int competitor, int period, int score) {
-  if(!validateIndex) { return; }
+  if(!validateIndex(competitor, period)) { return; }
   m_scoreboard[competitor][period] = score;
 }
 
 int Sport::getScore(int competitor, int period) {
-  if(!validateIndex) { return; }
+  if(!validateIndex(competitor, period)) { return INT_MIN; }
   return m_scoreboard[competitor][period];
 }
 
-int getTotalScore(int competitor) {
+int Sport::getTotalScore(int competitor) {
   int total = 0;
   for(auto period : m_scoreboard[competitor]) {
     total += period;
   }
 }
 
-void clearScoreboard() {
-  m_scoreboard.clear():
+void Sport::clearScoreboard() {
+  m_scoreboard.clear();
 }
 
 int main() {
