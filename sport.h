@@ -58,8 +58,3 @@ int Sport::getTotalScore(int competitor) {
 void Sport::clearScoreboard() {
   m_scoreboard.clear();
 }
-
-int main() {
-  Sport s = Sport(2, 4);
-  return 0;
-}
