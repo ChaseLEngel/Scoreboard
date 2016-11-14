@@ -1,0 +1,30 @@
+#include "IScoreboard.h"
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+class Scoreboard: public IScoreboard {
+  public:
+    Scoreboard(int competitor_count, int period_count);
+    void setScore(int competitor, int period, int score);
+    int getScore(int competitor, int period);
+    int getTotalScore(int competitor);
+    void clearScoreboard();
+  private:
+    vector< vector<int> > m_scoreboard;
+    bool validateIndex(int, int);
+    int m_competitor_count;
+    int m_period_count;
+    int count;
+    int periods;
+    int teams;
+    int score;
+};
+
+
+
+int main() {
+  Sport s = Sport(2, 4);
+  return 0;
+}
