@@ -9,3 +9,9 @@ Implementing Rock, Paper, Scissors for MVC:
 	* Game: 
 		* Model, controller, view
 		* Game can show competitor details.
+Alex Nelson
+Chase Engel
+Tyler Nash
+Chris Griggs
+Tracey Yoshima
+Mark Woolsey
