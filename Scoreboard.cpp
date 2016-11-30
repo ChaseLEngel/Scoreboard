@@ -19,6 +19,7 @@ bool Scoreboard::validateIndex(int competitor, int periods) {
 void Scoreboard::setScore(int competitor, int period, int score) {
   if(!validateIndex(competitor, period)) { return; }
   m_scoreboard[competitor-1][period-1] = score;
+  notifyObservers();
 }
 
 int Scoreboard::getScore(int competitor, int period) {
@@ -31,8 +32,10 @@ int Scoreboard::getTotalScore(int competitor) {
   for(auto period : m_scoreboard[competitor-1]) {
     total += period;
   }
+  return total;
 }
 
 void Scoreboard::clearScoreboard() {
   m_scoreboard.clear();
+  notifyObservers();
 }

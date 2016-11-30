@@ -1,10 +1,10 @@
 #include "IScoreboard.h"
 #include <vector>
 #include <climits>
-
+#include "ObserverPattern.hpp"
 using namespace std;
 
-class Scoreboard: public IScoreboard {
+class Scoreboard: public IScoreboard, public Observable {
   public:
     Scoreboard(int competitor_count, int period_count);
     void setScore(int competitor, int period, int score);
@@ -18,7 +18,7 @@ class Scoreboard: public IScoreboard {
     int m_period_count;
     int count;
     int periods;
-    int teams;
+   // int teams;
     int score;
 };
 
